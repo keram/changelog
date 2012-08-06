@@ -85,7 +85,7 @@ $().ready(function () {
 	    	}
 
 	    	if (data.repository && data.repository.length > 0) {
-	    		tpl += '<a class="project-repository" title="' + data.title + ' repository link" href="' + data.repository + '"><img width="32" height="32" alt="Github icon" src="img/github_white_black_cat_32.png" /></a>';
+	    		tpl += '<a class="project-repository" title="' + data.title + ' repository link" href="' + data.repository + '">R</a>';
 	    	}
 
 	    	tpl += '</div>';
@@ -142,7 +142,10 @@ $().ready(function () {
 					$.ajax({
 						type: 'GET',
 						url: href,
-						dataType: 'text',						
+						dataType: 'text',
+						error: function (r) {
+							console.log(r);
+						},
 						success: function (data) {
 							if (data) {
 								iframe.attr('src', 'data:text/plain,' + data);
