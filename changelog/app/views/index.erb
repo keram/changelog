@@ -33,26 +33,27 @@
 		</div>
 	</section>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="javascripts/libs/jquery-1.7.2.min.js"><\/script>')</script>
+
 <script src="javascripts/app.js"></script>
 <script>
-	var default_source = 'http://localhost/work/keramovo/changelog/html/source.js';
-    var s = document.location.search.match(/source=(https?:\/\/[\w\.\/]+\.js$)/);
+	var loc = document.location;
+	var default_source = loc.protocol + '//' + loc.host + '/source.js';
+    var s = loc.search.match(/source=(https?[^?]+\.js$)/);
+
     if (!s || s.length < 2) {
-    	document.location.href = document.location.href + '?source=' + default_source;
+     	loc.href = loc.protocol + '//' + loc.host + '/?source=' + encodeURIComponent(default_source);
     } else {
-    	document.write('<script src="' + s[1] + '"><\/script>');
+    	document.write('<script src="' + decodeURIComponent(s[1]) + '"><\/script>');
     }
 </script>
-<!--
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
 <script>
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
--->
+
 </body>
 </html>
