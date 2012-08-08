@@ -45,7 +45,7 @@
     if (!s || s.length < 2) {
      	loc.href = loc.protocol + '//' + loc.host + '/?source=' + encodeURIComponent(default_source);
     } else {
-    	document.write('<script src="' + decodeURIComponent(s[1]) + '"><\/script>');
+    	document.write('<script src="/sp?url=' + decodeURIComponent(s[1]) + '"><\/script>');
     }
 </script>
 <script>

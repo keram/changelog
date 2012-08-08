@@ -40,6 +40,26 @@ class Changelog < Padrino::Application
     content_type 'text/plain;charset=utf8'
     render :erb, result, :layout => false
   end
+
+  get '/sp' do
+    result = ''
+    url = params[:url].to_s.gsub(/\n/, '')
+    begin
+      timeout(5) do
+        uri = URI.parse(url)
+        cfg = {}
+        cfg[:ssl_verify_mode] = OpenSSL::SSL::VERIFY_NONE if url =~ /^https/
+
+        open(uri, cfg) do |page|
+          result = page.read
+        end
+      end
+    rescue
+      result = $!.message
+    end
+
+    result
+  end
   
   # enable :sessions
 

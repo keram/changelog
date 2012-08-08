@@ -111,5 +111,6 @@
 
 
 function initChangelog(source) {
+	console.log(source);
 	return new Changelog(source);
 }
