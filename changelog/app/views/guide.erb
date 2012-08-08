@@ -1,0 +1,52 @@
+<article>
+	<h1>Hello Humans!</h1>
+	<p class="perex">
+		This is simple guide how you can use this project.
+	</p>
+	<p>
+		You can use my default list of projects or you can build your own! <br />
+		Just create file "source.js" in format below and change url to: <br />
+		http://thishost/?source=<b>url_to_your_source.js</b
+	</p>
+	<h3>Example format of source.js</h3>
+	<xmp>
+initChangelog({
+	"author" : "@marek_public",
+	"title" : "Dev Changelog",
+	"url" : ""http://...",
+	"projects" : [
+		{
+			"title" : "Ruby on Rails",
+			"url" : "http://weblog.rubyonrails.org/",
+			"web" : "http://rubyonrails.org/",
+			"guide" : "http://guides.rubyonrails.org/",
+			"download" : "http://rubyonrails.org/download",
+			"repository" : "https://github.com/rails/rails/",
+			"branches" : [
+				{
+					"title" : "master",
+					"url" : "https://github.com/rails/rails/commits/master"
+				},
+				{
+					"title" : "3-2-stable",
+					"url" : "https://github.com/rails/rails/commits/3-2-stable"
+				}
+			]
+		}, {
+			"title" : "Node.js",
+			"url" : "http://nodejs.org/changelog.html",
+			"web" : "http://nodejs.org/",
+			"guide" : "http://guides.rubyonrails.org/",
+			"download" : "http://rubyonrails.org/download",
+			"repository" : "https://github.com/joyent/node/",
+			"branches" : [
+				{
+					"title" : "master",
+					"url" : "https://github.com/joyent/node/commits/master"
+				}
+			]
+		}
+	]
+});
+	</xmp>
+</article>

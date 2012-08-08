@@ -9,7 +9,6 @@
 			"title" : "Changelog",
 			"url" : "http://localhost/work/keramovo/changelog/html/",
 			"web" : "/",
-			"guide" : "/guide",
 			"repository" : "https://github.com/keram/changelog/",
 			"branches" : [
 				{
@@ -30,8 +29,8 @@
 		},
 
 		initSource : function (source) {
-			if (source.title && source.author) {
-	    		this.setTitle(source.title, source.author);
+			if (source.url && source.title && source.author) {
+	    		this.setTitle(source.url, source.title, source.author);
 	    	}
 	    	this.buildList(source);
 	    	this.bindEvents();
@@ -51,10 +50,10 @@
 	    	list.html(content);
 		},
 
-		setTitle : function (project_title, project_author) {
+		setTitle : function (source_url, source_title, source_author) {
 	    	var twitter_url = 'https://twitter.com/';
-	    	var author_url = twitter_url + project_author.replace('@', '');
-	    	var title = '<a href="./">' + project_title + '</a> by <a href="' + author_url + '">' + project_author + '</a>';
+	    	var author_url = twitter_url + source_author.replace('@', '');
+	    	var title = '<a href="/">Home</a> / <a href="' + source_url + '">' + source_title + '</a> by <a href="' + author_url + '">' + source_author + '</a>';
 	    	$('#logo').html(title);
 		},
 

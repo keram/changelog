@@ -34,7 +34,7 @@ class Changelog < Padrino::Application
         result = $!.message
       end
     else
-      result = "<iframe sandbox style='border: none; width: 100%; height: 45em;' src=\"#{url}\"></iframe>"
+      result = "<iframe sandbox style='border: none; width: 100%; height: 45em;' src=\"#{url}\"></iframe>" if url =~ /^http/
     end
 
     content_type 'text/plain;charset=utf8'

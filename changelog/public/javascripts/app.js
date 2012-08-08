@@ -12,11 +12,11 @@ $().ready(function () {
 		var a = $(this),
 			href = a.attr('href'),
 			url = proxy_url,
-			is_primary = a.hasClass('primary');
-		e.preventDefault();
-		e.stopPropagation();					
+			is_primary = a.hasClass('primary');			
 
 		if (is_primary) {
+			e.preventDefault();
+			e.stopPropagation();
 			url += '?url=' + encodeURIComponent(href);
 			$.ajax({
 				type: 'GET',
@@ -30,10 +30,12 @@ $().ready(function () {
 						main.html(data);
 					}							
 				}
-			});					
+			});
+
+			return false;			
 		} 
 
-		return false;
+		return true;
 	});
 
 	setTimeout(function () {
