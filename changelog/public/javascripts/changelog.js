@@ -1,6 +1,5 @@
 	function Changelog (source) {
-		this.initSource(source);
-		//this.init();
+		this.init(source);
 	}
 
 	Changelog.prototype = {
@@ -8,10 +7,9 @@
 
 		self_project : {
 			"title" : "Changelog",
-			"url" : "changelog.md",
-			"iframeable" : 0,
-			"web" : "",
-			"guide" : "guide.html",
+			"url" : "http://localhost/work/keramovo/changelog/html/",
+			"web" : "/",
+			"guide" : "/guide",
 			"repository" : "https://github.com/keram/changelog/",
 			"branches" : [
 				{
@@ -24,11 +22,11 @@
 		getSource : function () {
 			var self = this;
 
-			// $.get(this.source_url, function (response) {
-		    // 	if (response) {
-		    // 		self.initSource(response);
-		    // 	}
-		    // });    			
+			$.get(this.source_url, function (response) {
+		    	if (response) {
+		    		self.initSource(response);
+		    	}
+		    });    			
 		},
 
 		initSource : function (source) {
@@ -65,7 +63,7 @@
 	    	var tpl = '';
 	    	tpl += '<li>';
 	    	tpl += '<div class="primary">';
-	    	tpl += '<a class="primary" href="' + data.url + '" ' + (data.iframeable ? 'iframeable="1" ' : '') + '>' + data.title + '</a>'
+	    	tpl += '<a class="primary" href="' + data.url + '" >' + data.title + '</a>'
 	    	tpl += '</div>';
 
 	    	tpl += '<div class="sub">';
@@ -107,8 +105,8 @@
 	    	
 		},
 
-		init : function () {
-			// this.getSource();
+		init : function (source) {
+			this.initSource(source);
 		}
 	};
 

@@ -41,5 +41,5 @@ $().ready(function () {
 		if (logo.html() === 'Changelog initialization..') {
 			logo.html("Loading changelog source take too long, probably something bad happen. <br>Check source url and try reload.");
 		}
-	}, 5000);
+	}, 3000);
 });

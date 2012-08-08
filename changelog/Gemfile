@@ -13,6 +13,8 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'erubis', "~> 2.7.0"
 gem 'sqlite3'
 gem 'sequel'
+gem 'redcarpet'
+gem 'nokogiri'
 
 # Test requirements
 gem 'rspec', :group => "test"

@@ -1,3 +1,8 @@
+require 'net/http'
+require 'net/https'
+require 'open-uri'
+
+
 class Changelog < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
@@ -9,8 +14,31 @@ class Changelog < Padrino::Application
   end
 
   get '/proxy' do
-    response = 'test : ' + params[:url].to_s
-    render :erb, response, :layout => false
+    result = ''
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    url = params[:url].to_s.gsub(/\n/, '')
+
+    if url =~ /\.(md|MD|txt)$/
+      begin
+        timeout(5) do
+          uri = URI.parse(url)
+          cfg = {}
+          cfg[:ssl_verify_mode] = OpenSSL::SSL::VERIFY_NONE if url =~ /^https/
+
+          open(uri, cfg) do |page|
+            result = markdown.render(page.read) 
+          end
+        end
+
+      rescue 
+        result = $!.message
+      end
+    else
+      result = "<iframe sandbox style='border: none; width: 100%; height: 45em;' src=\"#{url}\"></iframe>"
+    end
+
+    content_type 'text/plain;charset=utf8'
+    render :erb, result, :layout => false
   end
   
   # enable :sessions
